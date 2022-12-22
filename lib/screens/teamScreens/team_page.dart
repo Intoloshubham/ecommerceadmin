@@ -25,8 +25,12 @@ class _TeamPageState extends State<TeamPage> {
   @override
   void initState() {
     _teamViewModel = Provider.of<TeamViewModel>(context, listen: false);
-    _teamViewModel.teamRegister();
-
+    // _teamViewModel.teamRegister();
+    // TeamLoginModel teamBody = TeamLoginModel(
+    //     bussiness_id: '63a3ca0ad05360f32ab039cc',
+    //     mobile: mobileNoController.text,
+    //     password: passwordController.text);
+    // _teamViewModel.teamLogin(teamBody);
     super.initState();
   }
 
@@ -94,8 +98,12 @@ class _TeamPageState extends State<TeamPage> {
                   child: ElevatedButton(
                     child: const Text('Login'),
                     onPressed: () {
-                      _teamViewModel.teamLogin(
-                          mobileNoController.text, passwordController.text);
+                      // _teamViewModel.teamLogin(mobileNoController.text, passwordController.text);
+                      TeamLoginModel teamBody = TeamLoginModel(
+                          bussiness_id: '63a3ca0ad05360f32ab039cc',
+                          mobile: mobileNoController.text,
+                          password: passwordController.text);
+                      _teamViewModel.teamLogin(teamBody);
                       // print(mobileNoController.text);
                       // print(passwordController.text);
                     },

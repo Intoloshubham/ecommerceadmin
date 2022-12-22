@@ -1,3 +1,7 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:ecommerceadmin/model/index.dart';
 import 'package:http/http.dart' as http;
 
 class APICall {
@@ -8,10 +12,12 @@ class APICall {
         headers: headers);
   }
 
-  Future<http.Response> teamLogin(mobile, password) async {
+  Future<http.Response> teamLogin(TeamLoginModel body) async {
+    // const data = {mobile,password};
     Map<String, String> headers = {'Content-Type': 'application/json'};
-    return await http.get(
-        Uri.parse('http://192.168.0.117:4000/api/team-register'),
-        headers: headers);
+    return await http.post(
+        Uri.parse('http://192.168.0.117:4000/api/login-team'),
+        headers: headers,
+        body: jsonEncode(body.toJson()));
   }
 }

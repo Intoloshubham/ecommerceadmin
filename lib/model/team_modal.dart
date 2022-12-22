@@ -36,7 +36,7 @@ class TeamLoginModel {
     this.password,
   });
 
-  int? bussiness_id;
+  String? bussiness_id;
   String? mobile;
   String? password;
 

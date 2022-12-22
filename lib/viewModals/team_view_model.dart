@@ -31,11 +31,11 @@ class TeamViewModel extends ChangeNotifier {
     });
   }
 
-  Future<void> teamLogin(mobile, password) async {
+  Future<void> teamLogin(TeamLoginModel body) async {
     CommonUtil().checkInternetConnection().then((value) {
       if (value) {
         notifyListeners();
-        APICall().teamLogin(mobile, password).then((response) {
+        APICall().teamLogin(body).then((response) {
           if (response.statusCode == 200) {
             _teamLoginResponse =
                 TeamLoginModel.fromJson(json.decode(response.body));
