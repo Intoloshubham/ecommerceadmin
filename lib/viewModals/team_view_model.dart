@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import '../api/api_call.dart';
 import '../model/index.dart';
 import '../utilities/common_util.dart';
@@ -19,19 +21,22 @@ class TeamViewModel extends ChangeNotifier {
                 TeamRegisterModel.fromJson(json.decode(response.body));
             _status = Status.success;
             notifyListeners();
+            return _status;
           } else {
             _status = Status.failed;
             notifyListeners();
+            return _status;
           }
         });
       } else {
         _status = Status.noInternet;
+        return _status;
         notifyListeners();
       }
     });
   }
 
-  Future<void> teamLogin(TeamLoginModel body) async {
+  Future<dynamic> teamLogin(TeamLoginModel body) async {
     CommonUtil().checkInternetConnection().then((value) {
       if (value) {
         notifyListeners();
@@ -41,9 +46,11 @@ class TeamViewModel extends ChangeNotifier {
                 TeamLoginModel.fromJson(json.decode(response.body));
             _status = Status.success;
             notifyListeners();
+            return response.statusCode;
           } else {
             _status = Status.failed;
             notifyListeners();
+            return response.statusCode;
           }
         });
       } else {

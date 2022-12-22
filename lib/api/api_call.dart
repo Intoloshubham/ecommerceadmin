@@ -13,11 +13,10 @@ class APICall {
   }
 
   Future<http.Response> teamLogin(TeamLoginModel body) async {
-    // const data = {mobile,password};
     Map<String, String> headers = {'Content-Type': 'application/json'};
     return await http.post(
-        Uri.parse('http://192.168.0.117:4000/api/login-team'),
+        Uri.parse('http://192.168.0.117:4000/api/team-login'),
         headers: headers,
-        body: jsonEncode(body.toJson()));
+        body: jsonEncode(body));
   }
 }

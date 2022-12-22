@@ -97,15 +97,13 @@ class _TeamPageState extends State<TeamPage> {
                   // padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                   child: ElevatedButton(
                     child: const Text('Login'),
-                    onPressed: () {
+                    onPressed: () async {
                       // _teamViewModel.teamLogin(mobileNoController.text, passwordController.text);
                       TeamLoginModel teamBody = TeamLoginModel(
                           bussiness_id: '63a3ca0ad05360f32ab039cc',
                           mobile: mobileNoController.text,
                           password: passwordController.text);
-                      _teamViewModel.teamLogin(teamBody);
-                      // print(mobileNoController.text);
-                      // print(passwordController.text);
+                      var temp = await _teamViewModel.teamLogin(teamBody);
                     },
                   ),
                 ),
